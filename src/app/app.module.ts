@@ -10,6 +10,8 @@ import { TodosComponent } from './todos/todos.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { UserService } from './user.service';
+import {AuthService} from './auth.service'
+import {TodoGuard} from './todo.guard'
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { UserService } from './user.service';
       },
       {
         path: 'todo',
-        component: TodosComponent
+        component: TodosComponent,
+        canActivate: [TodoGuard]
       },
       {
         path: '',
@@ -42,7 +45,7 @@ import { UserService } from './user.service';
       }
     ])
   ],
-  providers: [UserService],
+  providers: [UserService, AuthService, TodoGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

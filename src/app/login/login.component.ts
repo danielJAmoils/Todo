@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service'
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private user: UserService, private router:Router) { }
+  constructor(private user: UserService, private router:Router, private auth:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
     this.user.login(username, password).subscribe(data => {
       if(data.loggedIn){
         //logged in true
+        this.auth.loggedIn = true
         this.router.navigate(['todo'])
       }else{
         alert(data.message)

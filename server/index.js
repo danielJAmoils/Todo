@@ -1,10 +1,17 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const session = require('express-session')
 
 const User = require('./models/user')
 
 const app = express()
+
+app.use(session({
+    secret: 'asjoifusdauihdashuisdainfijnjignbuisdfuhasdifnnsaddhfhjsji',
+    saveUninitialized: false,
+    resave: false
+}))
 
 mongoose.Promise = Promise
 mongoose.connect('mongodb://localhost:27017/todoDB')
@@ -26,6 +33,8 @@ app.post('/api/login', async (req, res) => {
         })
     }else{
         //log user in
+        req.session.user = username
+        req.session.save()
         res.json({
             loggedIn: true,
         })
@@ -61,7 +70,11 @@ app.post('/api/register', async (req,res) => {
 
 })
 
-
+app.get('/api/isLoggedIn', (req,res) => {
+    res.json({
+      status: !!req.session.user
+    })
+  })
 
 app.listen(1234, () => {
     console.log("Server started at 1234")
