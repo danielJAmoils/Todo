@@ -6,6 +6,11 @@ interface loginResponse {
   message?: string
 }
 
+interface registerResponse {
+  success: boolean,
+  message: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +20,13 @@ export class UserService {
 
   login(username:string, password:string){
     return this.http.post<loginResponse>('/api/login', {
+      username,
+      password
+    })
+  }
+
+  register(username:string, password: string){
+    return this.http.post<registerResponse>('/api/register', {
       username,
       password
     })

@@ -33,6 +33,34 @@ app.post('/api/login', async (req, res) => {
 
 })
 
+app.post('/api/register', async (req,res) => {
+    const {username, password} = req.body
+
+    const exists = await User.findOne({username})
+
+    if(exists){
+        res.json({
+            success: false,
+            message: "User already exists"
+        })
+    }else{
+        const user = new User({
+            username,
+            password
+        })
+
+        const result = await user.save(user)
+
+        console.log(result)
+
+        res.json({
+            success: true,
+            message: "Account created"
+        })
+    }
+
+})
+
 
 
 app.listen(1234, () => {

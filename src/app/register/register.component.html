@@ -1,7 +1,8 @@
 <h1>Register</h1>
+<form (submit)="registerUser($event)">
+    <input type="text" placeholder="Username" id="username">
+    <input type="password" placeholder="Password" id="password">
+    <input type="password" placeholder="confirm password" id="cPassword">
 
-<input type="text" placeholder="Username">
-<input type="password" placeholder="Password">
-<input type="password" placeholder="confirm password">
-
-<input type="submit" value="submit">
+    <input type="submit" value="submit">
+</form>
