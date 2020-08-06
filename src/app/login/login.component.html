@@ -1,7 +1,10 @@
-<h1>Login</h1>
 <form (submit)="login($event)">
-    <input type="text" placeholder="Username" id="username">
-    <input type="password" placeholder="Password" id="password">
-
-    <input type="submit" value="submit">
+    <div class="title">
+        <h1>Login</h1>
+    </div>
+    <div class="container">
+        <input type="text" placeholder="Username" id="username" autocomplete="off">
+        <input type="password" placeholder="Password" id="password" autocomplete="off">
+        <input type="submit" value="submit" class="button">
+    </div>
 </form>

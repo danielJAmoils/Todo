@@ -1,0 +1,10 @@
+div{
+    text-align: center;
+}
+
+div button{
+    width: 70px;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 25%;
+}

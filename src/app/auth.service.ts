@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 interface loggedInResponse {
-  loggedIn: boolean
+  status: boolean
 }
 
 @Injectable({

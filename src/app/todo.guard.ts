@@ -20,8 +20,8 @@ export class TodoGuard implements CanActivate {
         return true
       }
       return this.auth.isLoggedIn().pipe(map(res => {
-        console.log(res.loggedIn)
-        if(res.loggedIn){
+        console.log(res.status)
+        if(res.status){
           this.auth.loggedIn = true
           return true
         }else{
