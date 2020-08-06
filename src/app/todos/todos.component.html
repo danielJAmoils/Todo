@@ -1,2 +1,5 @@
 <app-logout></app-logout>
-<p>todos works!</p>
+<div *ngFor="let todo of todoCollection">
+    <p>{{todo.name}}</p>
+    <p>{{todo.notes}}</p>
+</div>

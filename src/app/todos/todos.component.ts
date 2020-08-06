@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TodosService } from '../todos.service';
+import { TodosService, Todo } from '../todos.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -9,12 +9,16 @@ import { UserService } from '../user.service';
 })
 export class TodosComponent implements OnInit {
 
+  todoCollection:Todo[]
+
   constructor(private todos:TodosService, private user:UserService) { }
 
   ngOnInit(): void {
     this.todos.todosExist().subscribe(response => {
       if(response.exist === true){
-        alert("A todo collection for this user already exists")
+        this.todos.getTodos(this.user.username).subscribe(response => {
+          this.todoCollection = response.todos
+        })
       }else{
         this.todos.createTodos(this.user.username).subscribe(response => {
           if(!response.success){

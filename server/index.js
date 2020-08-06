@@ -100,7 +100,7 @@ app.get('/api/hasTodos', async (req, res) => {
     }
 })
 
-app.post('/api/createTodos', async (req, res) => {
+app.post('/api/createTodos', async (req, res) => {//create todos collection
     const {username} = req.body
     const exists = await Todos.findOne({username})
 
@@ -124,6 +124,16 @@ app.post('/api/createTodos', async (req, res) => {
             message: "Todos collection successfully created"
         })
     }
+})
+
+app.get('/api/getTodos', async (req, res) => {
+    const {username} = req.headers
+
+    const collection = await Todos.findOne({username})
+
+    res.json({
+        todos: collection.todos
+    })
 })
 
 app.listen(1234, () => {
