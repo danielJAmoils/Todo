@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       if(data.loggedIn){
         //logged in true
         this.auth.loggedIn = true
+        this.user.username = username
         this.router.navigate(['todo'])
       }else{
         alert(data.message)

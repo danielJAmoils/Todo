@@ -20,6 +20,8 @@ interface logoutResponse {
 })
 export class UserService {
 
+  username = ""
+
   constructor(private http:HttpClient) { }
 
   login(username:string, password:string){

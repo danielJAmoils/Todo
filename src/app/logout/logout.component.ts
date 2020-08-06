@@ -19,6 +19,7 @@ export class LogoutComponent implements OnInit {
     this.user.logout().subscribe(data => {
       if(data.success){
         this.auth.loggedIn = false
+        this.user.username = ''
         this.router.navigate([''])
       }else{
         alert("An error occurred while logging out")

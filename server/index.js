@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 
 const User = require('./models/user')
+const Todos = require('./models/todos')
 
 const app = express()
 
@@ -81,6 +82,48 @@ app.get('/api/isLoggedIn', (req,res) => {
     res.json({
         success: true
     })
+})
+
+app.get('/api/hasTodos', async (req, res) => {
+    const {username} = req.body
+
+    const todo = await Todos.findOne({username})
+
+    if(todo){
+        res.json({
+            exist: true
+        })
+    }else{
+        res.json({
+            exist: false
+        })
+    }
+})
+
+app.post('/api/createTodos', async (req, res) => {
+    const {username} = req.body
+    const exists = await Todos.findOne({username})
+
+    console.log(exists);
+
+    if(exists){
+        res.json({
+            success: false,
+            message: "User already exists"
+        })
+    }else{
+        const newTodo = new Todos({
+            username,
+            todos: []
+        })
+
+        const result = await newTodo.save(newTodo)
+
+        res.json({
+            success:true,
+            message: "Todos collection successfully created"
+        })
+    }
 })
 
 app.listen(1234, () => {

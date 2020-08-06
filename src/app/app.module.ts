@@ -13,6 +13,7 @@ import { UserService } from './user.service';
 import {AuthService} from './auth.service'
 import {TodoGuard} from './todo.guard';
 import { LogoutComponent } from './logout/logout.component'
+import{ TodosService} from './todos.service'
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { LogoutComponent } from './logout/logout.component'
       }
     ])
   ],
-  providers: [UserService, AuthService, TodoGuard],
+  providers: [UserService, AuthService, TodoGuard, TodosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
