@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const TodosSchema = new mongoose.Schema({
     username: String,
     todos : [{
-        name : String,
+        username : String,
         notes : String
     }]
     

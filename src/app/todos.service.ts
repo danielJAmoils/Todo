@@ -30,14 +30,12 @@ export class TodosService {
     return this.http.get<hasTodosResponse>('/api/hasTodos')
   }
 
-  createTodos(username:string){
-    return this.http.post<createTodosResponse>('/api/createTodos', {
-      username
-    })
+  createTodos(){
+    return this.http.post<createTodosResponse>('/api/createTodos', {})
   }
 
-  getTodos(username:string){
-    return this.http.get<getTodosResponse>('/api/getTodos', {[username]: username})
+  getTodos(){
+    return this.http.get<getTodosResponse>('/api/getTodos')
   }
 
 }

@@ -16,11 +16,11 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
     this.todos.todosExist().subscribe(response => {
       if(response.exist === true){
-        this.todos.getTodos(this.user.username).subscribe(response => {
+        this.todos.getTodos().subscribe(response => {
           this.todoCollection = response.todos
         })
       }else{
-        this.todos.createTodos(this.user.username).subscribe(response => {
+        this.todos.createTodos().subscribe(response => {
           if(!response.success){
             alert('something went wrong')
           }else{

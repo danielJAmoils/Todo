@@ -85,7 +85,7 @@ app.get('/api/isLoggedIn', (req,res) => {
 })
 
 app.get('/api/hasTodos', async (req, res) => {
-    const {username} = req.body
+    const username = req.session.user
 
     const todo = await Todos.findOne({username})
 
@@ -101,7 +101,7 @@ app.get('/api/hasTodos', async (req, res) => {
 })
 
 app.post('/api/createTodos', async (req, res) => {//create todos collection
-    const {username} = req.body
+    const username = req.session.user
     const exists = await Todos.findOne({username})
 
     console.log(exists);
@@ -113,7 +113,7 @@ app.post('/api/createTodos', async (req, res) => {//create todos collection
         })
     }else{
         const newTodo = new Todos({
-            username,
+            username: username,
             todos: []
         })
 
@@ -127,7 +127,7 @@ app.post('/api/createTodos', async (req, res) => {//create todos collection
 })
 
 app.get('/api/getTodos', async (req, res) => {
-    const {username} = req.headers
+    const username = req.session.user
 
     const collection = await Todos.findOne({username})
 
