@@ -11,6 +11,10 @@ interface registerResponse {
   message: string
 }
 
+interface logoutResponse {
+  success: boolean
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,5 +34,9 @@ export class UserService {
       username,
       password
     })
+  }
+
+  logout(){
+    return this.http.get<logoutResponse>('/api/logout')
   }
 }

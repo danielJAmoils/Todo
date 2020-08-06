@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
 
     if(password !== cPassword){
       errors += 1
+      alert("Passwords do not match")
     }//add more checks
 
     if(errors === 0){

@@ -11,7 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { UserService } from './user.service';
 import {AuthService} from './auth.service'
-import {TodoGuard} from './todo.guard'
+import {TodoGuard} from './todo.guard';
+import { LogoutComponent } from './logout/logout.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {TodoGuard} from './todo.guard'
     RegisterComponent,
     TodosComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

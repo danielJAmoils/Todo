@@ -76,6 +76,13 @@ app.get('/api/isLoggedIn', (req,res) => {
     })
   })
 
+  app.get('/api/logout', (req, res) => {
+    req.session.destroy()
+    res.json({
+        success: true
+    })
+})
+
 app.listen(1234, () => {
     console.log("Server started at 1234")
 })
