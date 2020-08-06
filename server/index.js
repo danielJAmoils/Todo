@@ -136,6 +136,23 @@ app.get('/api/getTodos', async (req, res) => {
     })
 })
 
+app.post('/api/createTodo', async (req, res) => {
+    const username = req.session.user
+    const {todo} = req.body
+
+    const collection = await Todos.findOne({username})
+
+    console.log(username);
+
+    collection.todos.push(todo);
+    collection.save();
+
+    res.json({
+        success: true
+    })
+
+})//might be bug with getting name from session
+
 app.listen(1234, () => {
     console.log("Server started at 1234")
 })

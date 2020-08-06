@@ -19,6 +19,10 @@ interface getTodosResponse {
   todos: Todo[]
 }
 
+interface createTodoResponse {
+  success: boolean
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +40,12 @@ export class TodosService {
 
   getTodos(){
     return this.http.get<getTodosResponse>('/api/getTodos')
+  }
+
+  createTodo(todo:Todo){
+    return this.http.post<createTodoResponse>('/api/createTodo', {
+      todo
+    })
   }
 
 }

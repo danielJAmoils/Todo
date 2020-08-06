@@ -3,3 +3,11 @@
     <p>{{todo.name}}</p>
     <p>{{todo.notes}}</p>
 </div>
+
+
+<p>Update Todos</p>
+<form (submit)="createTodo($event)">
+    <input type="text" id="name" placeholder="name">
+    <input type="text" id="notes" placeholder="notes">
+    <input type="submit" value="Submit">
+</form>

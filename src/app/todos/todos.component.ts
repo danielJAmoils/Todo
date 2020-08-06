@@ -31,4 +31,25 @@ export class TodosComponent implements OnInit {
     })
   }
 
+  createTodo(event){
+    event.preventDefault()
+
+    const target = event.target
+    const name:string = target.querySelector('#name').value
+    const notes:string = target.querySelector('#notes').value
+
+    const todo = {
+      name,
+      notes
+    }
+
+    this.todos.createTodo(todo).subscribe(response => {
+      if(response.success){
+        alert("Todo created")
+      }else{
+        alert("error creating todo")
+      }
+    })
+  }
+
 }
